@@ -1,0 +1,28 @@
+# Niramaya Physiotherapy (निरामयाः)
+
+> Physiotherapy and rehabilitation clinic at Life Republic, Jambe, Maharashtra. Single-page website available in English, Hindi and Marathi.
+
+## Services
+- Sports Injury Rehabilitation
+- Back Pain Treatment
+- Neck Pain Treatment
+- Arthritis Management
+- Post-Surgery Rehab
+- Neurological Physiotherapy
+- Pediatric Physiotherapy
+- Geriatric Physiotherapy
+- Dry Needling
+- Manual Therapy
+- Electrotherapy
+
+## Page sections
+- Home: introduction and consultation booking
+- About Us: the clinic's approach (assess, treat, strengthen)
+- Services: all eleven services
+- Conditions Treated: spine and neck, shoulder and arm, hip, knee and foot, brain and nerves
+- Testimonials: patient reviews and video stories
+- Contact: enquiry form that opens WhatsApp, map and directions
+
+## Contact
+- Address: Shop No 34, R10 Commercial, Life Republic Rd, Jambe, Maharashtra 411057
+- Phone / WhatsApp: +91 76660 03113
