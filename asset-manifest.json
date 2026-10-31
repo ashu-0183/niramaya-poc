@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/niramaya-poc/static/css/main.2ae2ca9a.css",
-    "main.js": "/niramaya-poc/static/js/main.ca49d2aa.js",
+    "main.js": "/niramaya-poc/static/js/main.68711e66.js",
     "index.html": "/niramaya-poc/index.html",
     "main.2ae2ca9a.css.map": "/niramaya-poc/static/css/main.2ae2ca9a.css.map",
-    "main.ca49d2aa.js.map": "/niramaya-poc/static/js/main.ca49d2aa.js.map"
+    "main.68711e66.js.map": "/niramaya-poc/static/js/main.68711e66.js.map"
   },
   "entrypoints": [
     "static/css/main.2ae2ca9a.css",
-    "static/js/main.ca49d2aa.js"
+    "static/js/main.68711e66.js"
   ]
 }
