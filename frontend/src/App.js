@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteProvider } from "@/content/SiteProvider";
 import { LanguageProvider } from "@/i18n";
@@ -9,12 +9,12 @@ function App() {
   return (
     <SiteProvider>
       <LanguageProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<Landing />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
         <Toaster position="top-center" richColors />
       </LanguageProvider>
     </SiteProvider>
