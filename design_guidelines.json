@@ -1,0 +1,167 @@
+{
+  "project_name": "Niramaya Physiotherapy",
+  "app_type": "landing_page",
+  "design_archetype": "Organic Earthy Medical Precision (Swiss-Editorial Hybrid)",
+  "language_support": {
+    "supported_locales": ["EN", "HI", "MR"],
+    "fonts": {
+      "latin_display": "Outfit, sans-serif",
+      "latin_body": "Plus Jakarta Sans, sans-serif",
+      "devanagari": "'Mukta', 'Noto Sans Devanagari', sans-serif"
+    }
+  },
+  "colors": {
+    "primary_teal": "#0b6b7b",
+    "primary_teal_dark": "#074752",
+    "primary_teal_light": "#e6f3f5",
+    "accent_green": "#49b646",
+    "accent_green_hover": "#3da13a",
+    "accent_lime_glow": "#8be04e",
+    "background_light": "#fafdfd",
+    "surface_card": "#ffffff",
+    "surface_muted": "#f0f7f7",
+    "text_dark": "#0f2327",
+    "text_muted": "#4b656b",
+    "border_subtle": "rgba(11, 107, 123, 0.12)",
+    "glass_background": "rgba(255, 255, 255, 0.82)",
+    "glass_border": "rgba(11, 107, 123, 0.15)"
+  },
+  "typography": {
+    "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight",
+    "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0b6b7b]",
+    "section_sub": "text-base sm:text-lg text-[#4b656b] max-w-2xl leading-relaxed",
+    "card_title": "text-lg sm:text-xl font-semibold text-[#0f2327]",
+    "label": "text-xs uppercase font-bold tracking-widest text-[#49b646]"
+  },
+  "image_urls": {
+    "logo": "https://customer-assets-lxgj4vgw.emergentagent.net/job_e380df7f-b0b8-4e25-a3ab-507bfe301f4b/artifacts/ea6bf703d3b693f0_logo.jpeg",
+    "hero_banner": "https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxwaHlzaW90aGVyYXB5fGVufDB8fHx8MTc9MzQ0NzA4OHww&ixlib=rb-4.1.0&q=85",
+    "physiotherapist_profile": "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwyfHxkb2N0b3IlMjBtZWRpY2FsJTIwY29uc3VsdGF0aW9ufGVufDB8fHx8MTc5MzI3NjczMnww&ixlib=rb-4.1.0&q=85",
+    "dry_needling": "https://images.unsplash.com/photo-1770653927355-2ba81c1522df?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwzfHxwaHlzaW90aGVyYXB5fGVufDB8fHx8MTc5MzQ0NzA4OHww&ixlib=rb-4.1.0&q=85",
+    "manual_therapy": "https://images.unsplash.com/photo-1645005512968-0c1fe99f0093?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwyfHxwaHlzaW90aGVyYXB5fGVufDB8fHx8MTc9MzQ0NzA4OHww&ixlib=rb-4.1.0&q=85",
+    "spine_rehab": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxwaHlzaW90aGVyYXB5fGVufDB8fHx8MTc9MzQ0NzA4OHww&ixlib=rb-4.1.0&q=85"
+  },
+  "required_sections": [
+    {
+      "id": "header_nav",
+      "name": "Navigation Bar & Language Switcher",
+      "features": [
+        "Logo image with dual branding text: Niramaya Physiotherapy / निरामया:",
+        "Links: Home, About Us, Services, Conditions Treated, Testimonials, Contact",
+        "Language dropdown menu: EN (English), HI (हिंदी), MR (मराठी)",
+        "Primary CTA button: 'Book Consultation' (scrolls to enquiry or triggers WhatsApp)",
+        "Glassmorphism sticky navbar with backdrop-blur"
+      ]
+    },
+    {
+      "id": "hero_section",
+      "name": "Kinetic Hero Section",
+      "features": [
+        "Headline reveal: 'Your Path to Natural Healing & Pain-Free Living'",
+        "Dual language tagline in Hindi/Marathi badges",
+        "Quick feature badges: 'Certified Specialists', '100% Personal Care', 'Evidence-Based Therapy'",
+        "Primary CTA button with Leaf Green (#49b646) accent",
+        "Secondary CTA button: 'Explore Services'",
+        "Hero image container with organic rounded mask and subtle shadow"
+      ]
+    },
+    {
+      "id": "marquee_ribbon",
+      "name": "Editorial Ribbon Marquee",
+      "features": [
+        "Slow sliding ribbon with stats and key highlights: 1000+ Happy Patients • Certified Physiotherapists • Advanced Dry Needling • Personal Rehabilitation • Life Republic Jambe"
+      ]
+    },
+    {
+      "id": "services_grid",
+      "name": "Key Services Bento Grid (All 11 Required)",
+      "services_list": [
+        "Sports Injury Rehabilitation",
+        "Back Pain Treatment",
+        "Neck Pain Treatment",
+        "Arthritis Management",
+        "Post-Surgery Rehab",
+        "Neurological Physiotherapy",
+        "Pediatric Physiotherapy",
+        "Geriatric Physiotherapy",
+        "Dry Needling",
+        "Manual Therapy",
+        "Electrotherapy"
+      ],
+      "features": [
+        "Interactive cards with icons, short descriptions, and 'Book for this service' prefill action",
+        "Filter tabs by category (All, Pain Management, Specialized Rehab, Advanced Modalities)"
+      ]
+    },
+    {
+      "id": "conditions_treated",
+      "name": "Conditions Treated Section",
+      "features": [
+        "Interactive body-region selector (Spine & Neck, Shoulder & Arm, Knee & Leg, Posture & Neuro)",
+        "Clear bullet points of symptoms treated & recovery approach"
+      ]
+    },
+    {
+      "id": "physiotherapist_profile",
+      "name": "Physiotherapist Profile Section",
+      "features": [
+        "Professional photo showcase",
+        "Qualifications & Experience details (BPTH/MPTH, 8+ Years Experience)",
+        "Registration Details (State Council / IAP Registered)",
+        "Awards & Certifications badges (Advanced Manual Therapist, Dry Needling Specialist)",
+        "Personal Philosophy quote"
+      ]
+    },
+    {
+      "id": "testimonials",
+      "name": "Testimonials & Video Placeholders",
+      "features": [
+        "Patient reviews with 5-star ratings and recovery stories",
+        "Video testimonial cards with play button modal/preview overlays"
+      ]
+    },
+    {
+      "id": "contact_and_map",
+      "name": "Contact, Enquiry Form & Google Maps",
+      "features": [
+        "Clinic address: Shop No 34, R10 Commercial, Life Republic Rd, Jambe, Maharashtra 411057",
+        "Direct Phone/WhatsApp: 7666003113",
+        "Enquiry Form (Name, Phone, Service, Message) submitting straight to WhatsApp pre-filled message",
+        "Interactive Embedded Google Maps frame & 'Get Directions' CTA button"
+      ]
+    },
+    {
+      "id": "floating_whatsapp",
+      "name": "Floating WhatsApp Chat Widget",
+      "features": [
+        "Fixed bottom-right position with pulse ring animation",
+        "Opens WhatsApp directly with pre-filled message: 'Hi, I want to book an appointment at Niramaya Physiotherapy'"
+      ]
+    },
+    {
+      "id": "footer",
+      "name": "Footer",
+      "features": [
+        "Dual-text branding logo, clinic address, operating hours, quick links, and copyright"
+      ]
+    }
+  ],
+  "motion_and_effects": {
+    "lenis_smooth_scroll": true,
+    "framer_motion_reveals": "Staggered fade-up for section cards",
+    "hover_states": "Card lift translateY(-4px), button scale hover, shadow intensification"
+  },
+  "instructions_to_main_agent": [
+    "Ensure the page supports multi-language switching seamlessly with EN, HI, and MR options. Store translation dictionary in a separate modular JS object.",
+    "All 11 services specified MUST be rendered in the Key Services Grid.",
+    "Form submission MUST build a pre-filled WhatsApp link to phone 7666003113.",
+    "Add data-testid attributes to all interactive elements, buttons, inputs, links, and cards.",
+    "Maintain high contrast ratios: text on dark teal sections must be clean white or soft mint."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Do not use transparent header without backdrop-blur.",
+    "Use exact hex colors provided: Primary Teal (#0b6b7b), Accent Leaf Green (#49b646).",
+    "All interactive elements must have hover and focus states.",
+    "Ensure Devanagari script renders gracefully when switching to Hindi or Marathi."
+  ]
+}
