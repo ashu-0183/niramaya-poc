@@ -21,7 +21,10 @@ Make the code clean, modular, and ready for a static deployment.
 User choices: enquiry form opens WhatsApp with details pre-filled; whole page translated (EN/HI/MR); clinic: Shop No 34, R10 Commercial, Life Republic Rd, Jambe, Maharashtra 411057; phone & WhatsApp 7666003113. User logo provided (used as-is).
 
 ## Architecture
-- Frontend only (React CRA + Tailwind + shadcn/ui + framer-motion + lenis) — builds to static files. No backend calls.
+- React CRA + Tailwind + shadcn/ui + framer-motion + lenis frontend; FastAPI + MongoDB backend (added 2026-10-31 for the admin editor).
+- Public site loads saved content from `GET /api/content` and merges it over the built-in defaults (`src/i18n/*.js`, `src/content/defaults.js`); falls back to defaults if the API is unreachable.
+- Admin editor at `/admin` (email + password, JWT httpOnly cookies, brute-force lockout, no public sign-up). Edits all page text in EN/HI/MR, reviews, video links, photos (Emergent object storage via `/api/uploads`, served from `/api/files/...`), contact details, password and admin accounts.
+- Backend modules: `database.py`, `models.py`, `security.py`, `storage.py`, `routes_auth.py`, `routes_content.py`.
 - i18n: `src/i18n/{en,hi,mr}.js` + `LanguageProvider` (localStorage, sets `<html lang>`).
 - Site constants: `src/lib/site.js` (phone, WhatsApp, address, map links, images). Smooth scroll: `src/lib/smooth.js`.
 - Components: `src/components/site/*` (Navbar, LanguageSwitcher, MobileMenu, Hero, RotatingBadge, Marquee, About, Services, ServiceCard, Conditions, Profile, Testimonials, Contact, EnquiryForm, Footer, WhatsAppButton).
@@ -41,6 +44,11 @@ User choices: enquiry form opens WhatsApp with details pre-filled; whole page tr
 - Enquiry form validation + WhatsApp prefill; "Book this" on a service pre-selects it in the form.
 - Verified at 1440px and 390px; form flow and WhatsApp links verified.
 
+## Implemented (2026-10-31, iteration 2) — Admin editor
+- `/admin` login (seeded admin in backend/.env; credentials in /app/memory/test_credentials.md).
+- Editor: page text per section and language, reviews (add/remove/reorder, stars, treatment, per-language text, sample tag), video stories (YouTube/Vimeo/mp4 links play in a popup), photo uploads for 9 slots with reset, contact details (phone, WhatsApp, address/map, pre-filled message), change password, add/remove admins.
+- Verified: login (bad + good), edit + save reflected on public site, photo upload + display, review + video added, mobile 390px admin and site.
+
 ## Placeholders to replace
 - Physiotherapist name, photo, quote, qualifications, years of experience, registration no., awards.
 - Clinic hours.
@@ -48,5 +56,5 @@ User choices: enquiry form opens WhatsApp with details pre-filled; whole page tr
 
 ## Backlog
 - P1: Replace placeholders with real details/photos; real patient videos.
-- P1: Add sitemap/canonical/og:image once the live domain is known.
-- P2: Google reviews widget, blog/exercise tips, opening-hours schema.
+- P1: Add sitemap/canonical/og:image once the live domain is known (static SEO tags in index.html are not admin-editable).
+- P2: Forgot-password email for admins, Google reviews widget, blog/exercise tips, opening-hours schema.

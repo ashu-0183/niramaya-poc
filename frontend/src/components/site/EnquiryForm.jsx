@@ -4,8 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { en, useLang } from "@/i18n";
-import { SERVICE_KEYS, WA_DEFAULT_MSG, waLink } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
+import { useLang } from "@/i18n";
+import { SERVICE_KEYS } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const FIELD = "h-auto rounded-none border-0 border-b border-[#0b6b7b]/25 bg-transparent px-0 py-3 text-lg text-[#0f2327] shadow-none placeholder:text-[#6b8186] focus-visible:border-[#0b6b7b] focus-visible:ring-0";
@@ -16,6 +17,7 @@ const FieldError = ({ msg, id }) =>
 export const EnquiryForm = ({ service, setService }) => {
   const { t } = useLang();
   const f = t.contact.form;
+  const { text, settings, waLink } = useSite();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -31,15 +33,16 @@ export const EnquiryForm = ({ service, setService }) => {
     setErrors(next);
     if (Object.keys(next).length) return;
 
+    const en = text.en;
     const serviceName = service === "other" ? en.contact.form.other : en.services.items[service]?.title;
-    const text = [
-      `${WA_DEFAULT_MSG}.`,
+    const body = [
+      `${settings.waMessage.trim().replace(/[.!]*$/, "")}.`,
       `Name: ${name.trim()}`,
       `Phone: +91 ${digits}`,
       `Service: ${serviceName}`,
       message.trim() && `Message: ${message.trim()}`,
     ].filter(Boolean).join("\n");
-    window.open(waLink(text), "_blank", "noopener,noreferrer");
+    window.open(waLink(body), "_blank", "noopener,noreferrer");
     toast.success(f.toast);
   };
 

@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/i18n";
-import { waLink } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export const WhatsAppButton = () => {
   const { t } = useLang();
+  const { waLink } = useSite();
   return (
     <motion.a
       href={waLink()}

@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { useLang } from "@/i18n";
-import { IMG, waLink } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { ServiceCard } from "./ServiceCard";
@@ -10,9 +10,8 @@ const ORDER = [
   "pediatric", "electro", "geriatric", "dryneedling", "manual",
 ];
 const WIDE = { sports: "md:col-span-2 lg:row-span-2", electro: "md:col-span-2" };
-const IMAGES = { sports: IMG.knee, electro: IMG.electro };
 
-const ServiceCta = ({ s, delay }) => (
+const ServiceCta = ({ s, href, delay }) => (
   <Reveal
     delay={delay}
     className="flex flex-col justify-between rounded-[1.75rem] bg-[#49b646] p-7 text-[#052f36]"
@@ -22,7 +21,7 @@ const ServiceCta = ({ s, delay }) => (
     <div>
       <p className="mt-4 text-[15px] leading-relaxed text-[#052f36]/90">{s.ctaText}</p>
       <a
-        href={waLink()}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#052f36] px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
@@ -38,6 +37,8 @@ const ServiceCta = ({ s, delay }) => (
 export const Services = ({ onBook }) => {
   const { t } = useLang();
   const s = t.services;
+  const { img, waLink } = useSite();
+  const images = { sports: img("sports"), electro: img("electro") };
 
   return (
     <section id="services" className="bg-[#f4f1e8] pb-24 md:pb-36" data-testid="services-section">
@@ -55,14 +56,14 @@ export const Services = ({ onBook }) => {
               id={key}
               num={String(i + 1).padStart(2, "0")}
               item={s.items[key]}
-              image={IMAGES[key]}
+              image={images[key]}
               className={WIDE[key] ?? ""}
               bookLabel={s.book}
               onBook={onBook}
               delay={(i % 4) * 0.06}
             />
           ))}
-          <ServiceCta s={s} delay={0.18} />
+          <ServiceCta s={s} href={waLink()} delay={0.18} />
         </div>
       </div>
     </section>

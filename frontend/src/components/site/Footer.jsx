@@ -1,6 +1,7 @@
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { useLang } from "@/i18n";
-import { ADDRESS_LINE, NAV_IDS, PHONE_DISPLAY, PHONE_TEL, waLink } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
+import { NAV_IDS } from "@/lib/site";
 import { scrollToId } from "@/lib/smooth";
 import { BrandMark } from "./BrandMark";
 import { Reveal } from "./Reveal";
@@ -8,6 +9,7 @@ import { Reveal } from "./Reveal";
 export const Footer = ({ onBook }) => {
   const { t } = useLang();
   const f = t.footer;
+  const { settings, phoneTel, waLink } = useSite();
   const go = (e, id) => {
     e.preventDefault();
     scrollToId(id);
@@ -48,9 +50,9 @@ export const Footer = ({ onBook }) => {
           <div className="space-y-6 md:col-span-5">
             <div>
               <h3 className="eyebrow text-[#c6f0a8]">{f.contactT}</h3>
-              <address className="mt-6 max-w-sm text-[15px] not-italic leading-relaxed text-white/80">{ADDRESS_LINE}</address>
+              <address className="mt-6 max-w-sm text-[15px] not-italic leading-relaxed text-white/80">{settings.address}</address>
               <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
-                <a href={PHONE_TEL} className="text-white transition-colors hover:text-[#8be04e]" data-testid="footer-phone-link">{PHONE_DISPLAY}</a>
+                <a href={phoneTel} className="text-white transition-colors hover:text-[#8be04e]" data-testid="footer-phone-link">{settings.phone}</a>
                 <a href={waLink()} target="_blank" rel="noopener noreferrer" className="text-white transition-colors hover:text-[#8be04e]" data-testid="footer-whatsapp-link">WhatsApp</a>
               </div>
             </div>

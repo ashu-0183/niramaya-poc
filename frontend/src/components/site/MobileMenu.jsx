@@ -2,12 +2,14 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Menu, Phone } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useLang } from "@/i18n";
-import { NAV_IDS, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
+import { NAV_IDS } from "@/lib/site";
 import { scrollToId } from "@/lib/smooth";
 import { EASE } from "./Reveal";
 
 export const MobileMenu = ({ open, setOpen, onBook }) => {
   const { t } = useLang();
+  const { settings, phoneTel } = useSite();
   const go = (id) => {
     setOpen(false);
     setTimeout(() => scrollToId(id), 380);
@@ -69,9 +71,9 @@ export const MobileMenu = ({ open, setOpen, onBook }) => {
               {t.nav.book}
               <ArrowUpRight className="h-4 w-4" />
             </button>
-            <a href={PHONE_TEL} className="btn-ghost-light w-full" data-testid="mobile-menu-call-link">
+            <a href={phoneTel} className="btn-ghost-light w-full" data-testid="mobile-menu-call-link">
               <Phone className="h-4 w-4" />
-              {PHONE_DISPLAY}
+              {settings.phone}
             </a>
           </div>
         </div>

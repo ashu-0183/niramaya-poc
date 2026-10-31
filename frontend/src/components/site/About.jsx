@@ -1,13 +1,14 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLang } from "@/i18n";
-import { IMG } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export const About = () => {
   const { t } = useLang();
   const a = t.about;
+  const { img } = useSite();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-9%", "9%"]);
@@ -20,7 +21,7 @@ export const About = () => {
           <Reveal delay={0.1} className="mt-12">
             <div ref={ref} className="relative aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-tl-[10rem]">
               <motion.img
-                src={IMG.about}
+                src={img("about")}
                 alt={a.imgAlt}
                 loading="lazy"
                 style={{ y, scale: 1.2 }}

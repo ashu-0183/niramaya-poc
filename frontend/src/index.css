@@ -113,6 +113,9 @@ body {
     .btn-leaf {
         @apply inline-flex items-center justify-center gap-2 rounded-full bg-[#49b646] px-6 py-3.5 text-[15px] font-semibold text-[#052f36] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-[#8be04e] hover:shadow-[0_18px_40px_-16px_rgba(73,182,70,0.8)] active:translate-y-0;
     }
+    .btn-teal {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-[#0b6b7b] px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#095a68] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0;
+    }
     .btn-ghost-light {
         @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-6 py-3.5 text-[15px] font-semibold text-white transition-[background-color,border-color] duration-300 hover:border-white/70 hover:bg-white/10;
     }

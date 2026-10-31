@@ -1,6 +1,7 @@
 import { Award, BadgeCheck, Camera, Clock, GraduationCap, Sparkles } from "lucide-react";
 import { useLang } from "@/i18n";
 import { IMG } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
@@ -31,15 +32,21 @@ const List = ({ items }) => (
   </ul>
 );
 
-const PhotoPlaceholder = ({ p }) => (
+const PhotoPlaceholder = ({ p, photo }) => (
   <Reveal className="relative lg:sticky lg:top-28">
     <div className="grain relative isolate mx-auto aspect-[4/5] max-w-[440px] overflow-hidden rounded-b-[2rem] rounded-t-[999px] bg-[#01687b]" data-testid="profile-photo-placeholder">
-      <img src={IMG.mark} alt="" className="absolute left-1/2 top-[40%] w-[64%] -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#052f36]/70 via-transparent to-transparent" />
-      <div className="absolute inset-x-5 bottom-5 z-10 flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 p-4 text-white backdrop-blur-md">
-        <Camera className="h-5 w-5 shrink-0 text-[#c6f0a8]" />
-        <span className="text-sm">{p.photo}</span>
-      </div>
+      {photo ? (
+        <img src={photo} alt={p.name} className="absolute inset-0 h-full w-full object-cover" data-testid="profile-photo" />
+      ) : (
+        <>
+          <img src={IMG.mark} alt="" className="absolute left-1/2 top-[40%] w-[64%] -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#052f36]/70 via-transparent to-transparent" />
+          <div className="absolute inset-x-5 bottom-5 z-10 flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 p-4 text-white backdrop-blur-md">
+            <Camera className="h-5 w-5 shrink-0 text-[#c6f0a8]" />
+            <span className="text-sm">{p.photo}</span>
+          </div>
+        </>
+      )}
     </div>
     <div className="absolute -right-2 top-10 rounded-[1.25rem] bg-[#49b646] px-5 py-4 text-[#052f36] shadow-[0_24px_50px_-20px_rgba(5,47,54,0.6)] sm:right-0 lg:-right-6" data-testid="profile-years-badge">
       <span className="block font-display text-4xl leading-none">{p.years}</span>
@@ -51,12 +58,13 @@ const PhotoPlaceholder = ({ p }) => (
 export const Profile = () => {
   const { t } = useLang();
   const p = t.profile;
+  const { img } = useSite();
 
   return (
     <section id="profile" className="relative bg-[#f4f1e8] py-24 md:py-36" data-testid="profile-section">
       <div className="shell grid gap-14 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-5">
-          <PhotoPlaceholder p={p} />
+          <PhotoPlaceholder p={p} photo={img("profile")} />
         </div>
         <div className="lg:col-span-7">
           <SectionHeading label={p.label} title={p.name} testid="profile-name" />

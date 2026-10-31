@@ -1,7 +1,6 @@
 from fastapi import FastAPI, APIRouter
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
@@ -14,10 +13,11 @@ from datetime import datetime, timezone
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+from fastapi.concurrency import run_in_threadpool  # noqa: E402
+from database import client, db  # noqa: E402
+from routes_auth import router as auth_router, seed_admin  # noqa: E402
+from routes_content import router as content_router  # noqa: E402
+from storage import init_storage  # noqa: E402
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -66,6 +66,9 @@ async def get_status_checks():
     
     return status_checks
 
+api_router.include_router(auth_router)
+api_router.include_router(content_router)
+
 # Include the router in the main app
 app.include_router(api_router)
 
@@ -83,6 +86,20 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+@app.on_event("startup")
+async def startup():
+    await db.users.create_index("email", unique=True)
+    await db.login_attempts.create_index("identifier")
+    await db.files.create_index("storage_path")
+    await db.site_content.create_index("key", unique=True)
+    await seed_admin()
+    try:
+        await run_in_threadpool(init_storage)
+        logger.info("Storage initialized")
+    except Exception as e:
+        logger.error(f"Storage init failed: {e}")
+
 
 @app.on_event("shutdown")
 async def shutdown_db_client():

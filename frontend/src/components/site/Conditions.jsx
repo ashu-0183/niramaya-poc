@@ -2,15 +2,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Leaf, MessageCircle } from "lucide-react";
 import { useLang } from "@/i18n";
-import { IMG, waLink } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
 import { EASE, Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-
-const REGION_IMG = [IMG.spine, IMG.shoulder, IMG.knee, IMG.rehab];
 
 export const Conditions = () => {
   const { t } = useLang();
   const c = t.conditions;
+  const { img, waLink } = useSite();
+  const regionImages = [0, 1, 2, 3].map((i) => img(`cond${i}`));
   const [active, setActive] = useState(0);
   const region = c.regions[active] ?? c.regions[0];
 
@@ -48,9 +48,9 @@ export const Conditions = () => {
 
         <div className="lg:col-span-7">
           <Reveal className="relative aspect-[16/11] overflow-hidden rounded-[2rem] md:rounded-tr-[8rem]" data-testid="conditions-image-frame">
-            {REGION_IMG.map((src, i) => (
+            {regionImages.map((src, i) => (
               <motion.img
-                key={src}
+                key={i}
                 src={src}
                 alt={c.regions[i]?.name ?? ""}
                 loading="lazy"

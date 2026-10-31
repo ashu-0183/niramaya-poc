@@ -1,7 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import en from "./en";
-import hi from "./hi";
-import mr from "./mr";
+import { useSite } from "@/content/SiteProvider";
 
 export const LANGS = [
   { code: "en", label: "English", short: "EN" },
@@ -9,14 +7,14 @@ export const LANGS = [
   { code: "mr", label: "मराठी", short: "मरा" },
 ];
 
-const DICTS = { en, hi, mr };
+const CODES = LANGS.map((l) => l.code);
 const STORAGE_KEY = "niramaya-lang";
-const LangContext = createContext({ lang: "en", setLang: () => {}, t: en });
+const LangContext = createContext(null);
 
 const initialLang = () => {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return DICTS[saved] ? saved : "en";
+    return CODES.includes(saved) ? saved : "en";
   } catch {
     return "en";
   }
@@ -24,6 +22,7 @@ const initialLang = () => {
 
 export const LanguageProvider = ({ children }) => {
   const [lang, setLang] = useState(initialLang);
+  const { text } = useSite();
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -35,11 +34,10 @@ export const LanguageProvider = ({ children }) => {
   }, [lang]);
 
   return (
-    <LangContext.Provider value={{ lang, setLang, t: DICTS[lang] }}>
+    <LangContext.Provider value={{ lang, setLang, t: text[lang] ?? text.en }}>
       {children}
     </LangContext.Provider>
   );
 };
 
 export const useLang = () => useContext(LangContext);
-export { en };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MotionConfig } from "framer-motion";
-import { Toaster } from "@/components/ui/sonner";
+import { useSite } from "@/content/SiteProvider";
+import { Splash } from "@/components/site/Splash";
 import { About } from "@/components/site/About";
 import { Conditions } from "@/components/site/Conditions";
 import { Contact } from "@/components/site/Contact";
@@ -16,11 +17,14 @@ import { scrollToId, useLenis } from "@/lib/smooth";
 
 export default function Landing() {
   useLenis();
+  const { loading } = useSite();
   const [service, setService] = useState("");
   const book = (key) => {
     if (typeof key === "string" && key) setService(key);
     scrollToId("contact");
   };
+
+  if (loading) return <Splash />;
 
   return (
     <MotionConfig reducedMotion="user">
@@ -37,7 +41,6 @@ export default function Landing() {
       </main>
       <Footer onBook={() => book()} />
       <WhatsAppButton />
-      <Toaster position="top-center" richColors />
     </MotionConfig>
   );
 }

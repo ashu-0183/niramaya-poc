@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useMotionTemplate, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { useLang } from "@/i18n";
-import { IMG, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site";
+import { useSite } from "@/content/SiteProvider";
 import { scrollToId } from "@/lib/smooth";
 import { EASE } from "./Reveal";
 import { RotatingBadge } from "./RotatingBadge";
@@ -15,6 +15,7 @@ const fadeUp = (delay) => ({
 
 export const Hero = ({ onBook }) => {
   const { t, lang } = useLang();
+  const { img, phoneTel, settings } = useSite();
   const h = t.hero;
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -94,9 +95,9 @@ export const Hero = ({ onBook }) => {
               <MapPin className="h-4 w-4 text-[#8be04e]" />
               {h.location}
             </span>
-            <a href={PHONE_TEL} className="flex items-center gap-2 transition-colors hover:text-white" data-testid="hero-call-link">
+            <a href={phoneTel} className="flex items-center gap-2 transition-colors hover:text-white" data-testid="hero-call-link">
               <Phone className="h-4 w-4 text-[#8be04e]" />
-              {PHONE_DISPLAY}
+              {settings.phone}
             </a>
           </motion.div>
         </motion.div>
@@ -110,7 +111,7 @@ export const Hero = ({ onBook }) => {
             className="relative mx-auto aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-b-[2.25rem] rounded-t-[999px] shadow-[0_60px_120px_-40px_rgba(2,30,35,0.85)]"
             data-testid="hero-image-frame"
           >
-            <motion.img src={IMG.hero} alt={h.imgAlt} style={{ y: imgY, scale: 1.2 }} className="h-full w-full object-cover" />
+            <motion.img src={img("hero")} alt={h.imgAlt} style={{ y: imgY, scale: 1.2 }} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#052f36]/75 via-transparent to-[#0b6b7b]/10" />
             <div className="absolute inset-x-5 bottom-5 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-center text-sm text-white backdrop-blur-md">
               <span className="font-deva">{h.caption}</span>

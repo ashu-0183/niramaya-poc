@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin
 
 User-agent: Googlebot
 User-agent: Bingbot
@@ -20,3 +21,4 @@ User-agent: Amazonbot
 User-agent: CCBot
 Allow: /
 Disallow: /api/
+Disallow: /admin
