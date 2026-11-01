@@ -5,6 +5,7 @@ export const DEFAULT_SETTINGS = {
   whatsapp: "917666003113",
   address: "Shop No 34, R10 Commercial, Life Republic Rd, Jambe, Maharashtra 411057",
   waMessage: "Hi, I want to book an appointment",
+  timing: "7:30 AM to 9:00 PM",
 };
 
 export const DEFAULT_IMAGES = {
@@ -33,33 +34,53 @@ export const IMAGE_SLOTS = [
 
 export const DEFAULT_REVIEWS = [
   {
-    id: "sample-1", name: "", service: "back", rating: 5, sample: true,
+    id: "sample-1",
+    name: "Ashutosh Sharma",
+    service: "back",
+    rating: 5,
+    sample: false,
     text: {
-      en: "After weeks of lower-back pain, the step-by-step plan and home exercises helped me get back to work without pain.",
-      hi: "हफ़्तों के कमर दर्द के बाद, चरण-दर-चरण योजना और घर के व्यायामों ने मुझे बिना दर्द के काम पर लौटने में मदद की।",
-      mr: "आठवडे चाललेल्या कंबरदुखीनंतर, टप्प्याटप्प्याच्या योजनेमुळे आणि घरच्या व्यायामांमुळे मी वेदनेशिवाय कामावर परत जाऊ शकलो.",
+      en: "Suffered a severe lower back injury due to heavy lifting at the gym. The step-by-step spine therapy and corrective exercises helped me fully recover and get back to training pain-free.",
+      hi: "जिम में भारी वजन उठाने के कारण कमर के निचले हिस्से में गंभीर चोट लग गई थी। चरण-दर-चरण रीढ़ की थेरेपी और सही व्यायामों ने मुझे पूरी तरह ठीक होने और बिना दर्द के दोबारा ट्रेनिंग शुरू करने में मदद की।",
+      mr: "जिममध्ये जड वजन उचलल्यामुळे पाठीच्या खालच्या भागात तीव्र दुखापत झाली होती. टप्प्याटप्प्याने केलेल्या थेरपीमुळे आणि योग्य व्यायामांमुळे मी पूर्णपणे बरा झालो आणि पुन्हा वर्कआउट सुरू करू शकलो.",
     },
   },
   {
-    id: "sample-2", name: "", service: "postsurgery", rating: 5, sample: true,
+    id: "sample-2",
+    name: "Mayank Shrivastava",
+    service: "spine",
+    rating: 5,
+    sample: false,
     text: {
-      en: "My knee recovery after surgery felt smooth. Every session was explained clearly and my progress was tracked.",
-      hi: "सर्जरी के बाद घुटने की रिकवरी बहुत आसान रही। हर सत्र स्पष्ट रूप से समझाया गया और मेरी प्रगति पर नज़र रखी गई।",
-      mr: "शस्त्रक्रियेनंतर गुडघ्याची पुनर्प्राप्ती अगदी सहज झाली. प्रत्येक सत्र स्पष्टपणे समजावले गेले आणि माझ्या प्रगतीवर लक्ष ठेवले गेले.",
+      en: "Developed chronic neck pain and posture stiffness from long hours of sitting at my desk. The posture correction routines and targeted physical therapy brought immediate relief.",
+      hi: "डेस्क पर लंबे समय तक बैठने से गर्दन में पुराना दर्द और अकड़न हो गई थी। पोस्चर सुधार की दिनचर्या और लक्षित फिजियोथेरेपी से तुरंत राहत मिली।",
+      mr: "डेस्कवर तासनतास बसल्यामुळे मानदुखी आणि आखडण्याचा त्रास सुरू झाला होता. पोस्चर सुधारण्याच्या सत्रांमुळे आणि फिजियोथेरपीमुळे मला त्वरित आराम मिळाला.",
     },
   },
   {
-    id: "sample-3", name: "", service: "geriatric", rating: 5, sample: true,
+    id: "sample-3",
+    name: "Prashant Agarwal",
+    service: "shoulder",
+    rating: 5,
+    sample: false,
     text: {
-      en: "Gentle, patient care for my mother's balance problems. She walks with much more confidence now.",
-      hi: "मेरी माँ की संतुलन की समस्या के लिए सौम्य और धैर्यपूर्ण देखभाल। अब वे कहीं ज़्यादा आत्मविश्वास से चलती हैं।",
-      mr: "माझ्या आईच्या तोलाच्या समस्येसाठी सौम्य आणि संयमी काळजी. आता ती खूप अधिक आत्मविश्वासाने चालते.",
+      en: "Struggling with a painful shoulder injury for months. Thanks to customized electrotherapy sessions and guided rehab, I regained full range of motion.",
+      hi: "महीनों से कंधे की दर्दनाक चोट से परेशान था। अनुकूलित इलेक्ट्रोथेरेपी सत्रों और निर्देशित पुनर्वास के लिए धन्यवाद, मुझे कंधे की पूरी मूवमेंट वापस मिल गई।",
+      mr: "अनेक महिन्यांपासून खांद्याच्या दुखापतीमुळे त्रस्त होतो. इलेक्ट्रोथेरपी सत्रांमुळे आणि योग्य मार्गदर्शनामुळे माझ्या खांद्याची हालचाल पूर्णपणे पूर्ववत झाली.",
+    },
+  },
+  {
+    id: "sample-4",
+    name: "More patient stories coming soon...",
+    service: "general",
+    rating: 5,
+    sample: false,
+    text: {
+      en: "We are continually documenting patient recovery journeys to share their success stories here.",
+      hi: "हम लगातार नए रोगियों की रिकवरी यात्रा को दर्ज कर रहे हैं ताकि उनकी सफलता की कहानियां यहां साझा की जा सकें।",
+      mr: "आम्ही सतत नवीन रुग्णांच्या पुनर्प्राप्तीचा प्रवास नोंदवत आहोत जेणेकरून त्यांच्या यशोगाथा येथे सामायिक करता येतील.",
     },
   },
 ];
 
-export const DEFAULT_VIDEOS = [
-  { id: "video-1", url: "", title: { en: "Back on the field", hi: "फिर से मैदान पर", mr: "पुन्हा मैदानावर" } },
-  { id: "video-2", url: "", title: { en: "Walking with confidence", hi: "आत्मविश्वास के साथ चलना", mr: "आत्मविश्वासाने चालणे" } },
-  { id: "video-3", url: "", title: { en: "Life after knee surgery", hi: "घुटने की सर्जरी के बाद का जीवन", mr: "गुडघा शस्त्रक्रियेनंतरचे आयुष्य" } },
-];
+export const DEFAULT_VIDEOS = [];

@@ -117,7 +117,7 @@ const en = {
     visitT: "Visit the clinic",
     callT: "Call or WhatsApp",
     hoursT: "Clinic hours",
-    hours: "[Add clinic hours]",
+    hours: "7:30 AM to 9:00 PM",
     directions: "Get Directions",
     call: "Call now",
     mapTitle: "Map showing Niramaya Physiotherapy",
