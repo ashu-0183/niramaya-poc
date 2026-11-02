@@ -74,24 +74,43 @@ const en = {
       { name: "Brain & Nerves", items: ["Stroke (paralysis)", "Parkinson's disease", "Bell's palsy", "Peripheral neuropathy", "Balance & gait problems", "Spinal cord injury"] },
     ],
   },
-  profile: {
-    label: "Your Physiotherapist",
-    name: "Dr. [Physiotherapist Name], PT",
-    role: "Physiotherapist · Niramaya Physiotherapy",
-    photo: "Professional photo — coming soon",
-    years: "[X]+",
-    yearsLabel: "years of experience",
-    quote: "[Add a short personal note about your approach to care here.]",
+profile: {
+    label: "Your Physiotherapists",
+    name: "Dr. Ashwini More (PT) & Dr. Neha Anjum",
+    role: "Expert Physiotherapists · Niramaya Physiotherapy",
+    photo: "/assets/dr-ashwini.jpg.jpeg", // Main featured photo
+    secondaryPhoto: "/assets/dr-neha.jpg.jpeg",
+    years: "8+",
+    yearsLabel: "years of combined clinical expertise",
+    quote: "Dedicated to providing evidence-based musculoskeletal and orthopaedic care for pain-free living and full mobility.",
+    
+    // Primary Doctor (Dr. Ashwini More) details
+    doc1Name: "Dr. Ashwini More (PT)",
+    doc1Role: "Lead Physiotherapist",
+    doc1Exp: "8 Years",
+    doc1Reg: "GAPT/21/G00331",
+    doc1Qual: ["MPT (Musculoskeletal Sciences)", "BPT (Bachelor of Physiotherapy)"],
+    doc1Expertise: ["Musculoskeletal Rehabilitation", "Sports Injury Management", "Evidence-Based Physiotherapy", "Manual Therapy", "Dry Needling", "Cupping"],
+
+    // Second Doctor (Dr. Neha Anjum) details
+    doc2Name: "Dr. Neha Anjum",
+    doc2Role: "Orthopaedic Physiotherapist",
+    doc2Exp: "4 Years",
+    doc2Reg: "GAPT/24/G00671",
+    doc2Qual: ["MPT (Orthopaedics)", "BPT (Bachelor of Physiotherapy)"],
+    doc2Expertise: ["Orthopaedic Rehabilitation", "Slip Disc & Sciatica", "Frozen Shoulder & Knee Pain", "Post-Surgical Rehab", "Joint Mobilisation", "Posture Correction"],
+
+    // Keeping fallback single-profile fields intact so other templates don't break
     qualificationsT: "Qualifications",
-    qualifications: ["[Degree — e.g. BPTh]", "[Post-graduate degree / specialisation]"],
+    qualifications: ["MPT (Musculoskeletal Sciences)", "MPT (Orthopaedics)", "BPT"],
     experienceT: "Experience",
-    experience: "[X]+ years of clinical practice in physiotherapy and rehabilitation.",
+    experience: "4 to 8+ years of clinical practice across hospital and specialized clinic settings.",
     expertiseT: "Areas of expertise",
-    expertise: ["Sports rehabilitation", "Manual therapy", "Dry needling", "Spine care", "Neuro rehab", "Post-surgery recovery"],
-    registrationT: "Registration",
-    registration: "[State Council / IAP] · Reg. No. [XXXXX]",
-    awardsT: "Awards & certifications",
-    awards: ["[Certification name]", "[Award / recognition]", "[Advanced course / workshop]"],
+    expertise: ["Musculoskeletal Rehabilitation", "Orthopaedic Physiotherapy", "Sports Injuries", "Dry Needling", "Manual Therapy", "Post-Surgical Recovery"],
+    registrationT: "Registrations",
+    registration: "GAPT Reg. Nos: GAPT/21/G00331 & GAPT/24/G00671",
+    awardsT: "Certifications",
+    awards: ["Dry Needling Practitioner", "Cupping Therapy Certified", "Evidence-Based Rehab"],
   },
   testimonials: {
     label: "Testimonials",
