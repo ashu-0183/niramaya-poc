@@ -23,7 +23,7 @@ export const EnquiryForm = ({ service, setService }) => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
 
-  const submit = (e) => {
+const submit = (e) => {
     e.preventDefault();
     const digits = phone.replace(/\D/g, "").replace(/^(91|0)(?=\d{10}$)/, "");
     const next = {};
@@ -32,6 +32,13 @@ export const EnquiryForm = ({ service, setService }) => {
     if (!service) next.service = f.errService;
     setErrors(next);
     if (Object.keys(next).length) return;
+
+    // Fire Google Ads Booking Form Conversion
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-11465883491/a6ToCL-r6JEbEOP-rdsq",
+      });
+    }
 
     const en = text.en;
     const serviceName = service === "other" ? en.contact.form.other : en.services.items[service]?.title;

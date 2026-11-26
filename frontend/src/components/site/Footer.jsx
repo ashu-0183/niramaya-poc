@@ -1,4 +1,6 @@
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { BRANCH_LIST } from "@/content/branches";
 import { useLang } from "@/i18n";
 import { useSite } from "@/content/SiteProvider";
 import { NAV_IDS } from "@/lib/site";
@@ -9,9 +11,15 @@ import { Reveal } from "./Reveal";
 export const Footer = ({ onBook }) => {
   const { t } = useLang();
   const f = t.footer;
-  const { settings, phoneTel, waLink } = useSite();
+  const { settings, phoneTel, waLink, branch } = useSite();
+  const navigate = useNavigate();
+
   const go = (e, id) => {
     e.preventDefault();
+    if (branch) {
+      navigate(id === "home" ? "/" : `/#${id}`);
+      return;
+    }
     scrollToId(id);
   };
 
@@ -31,11 +39,13 @@ export const Footer = ({ onBook }) => {
         </div>
 
         <div className="grid gap-12 py-16 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <BrandMark />
+          <div className="md:col-span-3">
+            <Link to="/" onClick={() => scrollToId("home")} className="inline-block">
+              <BrandMark />
+            </Link>
             <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-white/75">{f.tagline}</p>
           </div>
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h3 className="eyebrow text-[#c6f0a8]">{f.quick}</h3>
             <ul className="mt-6 space-y-3">
               {NAV_IDS.map((id) => (
@@ -43,6 +53,27 @@ export const Footer = ({ onBook }) => {
                   <a href={`#${id}`} onClick={(e) => go(e, id)} className="text-[15px] text-white/80 transition-colors hover:text-white" data-testid={`footer-link-${id}`}>
                     {t.nav[id]}
                   </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-span-2">
+            <h3 className="eyebrow text-[#c6f0a8]">Branches</h3>
+            <ul className="mt-6 space-y-3">
+              <li>
+                <Link to="/" className="text-[15px] text-white/80 transition-colors hover:text-white" data-testid="footer-branch-home">
+                  Life Republic (Main)
+                </Link>
+              </li>
+              {BRANCH_LIST.map((b) => (
+                <li key={b.slug}>
+                  <Link
+                    to={`/branches/${b.slug}`}
+                    className="text-[15px] text-white/80 transition-colors hover:text-white"
+                    data-testid={`footer-branch-${b.slug}`}
+                  >
+                    {b.shortName}
+                  </Link>
                 </li>
               ))}
             </ul>

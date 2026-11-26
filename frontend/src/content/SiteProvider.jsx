@@ -13,15 +13,31 @@ const withCountry = (d) => (d.length === 10 ? `91${d}` : d);
 const nonEmpty = (obj) =>
   Object.fromEntries(Object.entries(obj ?? {}).filter(([, v]) => typeof v === "string" && v.trim()));
 
-export const buildSite = (remote) => {
-  const settings = { ...DEFAULT_SETTINGS, ...nonEmpty(remote?.settings) };
+export const buildSite = (remote, branch = null) => {
+  const baseSettings = { ...DEFAULT_SETTINGS, ...nonEmpty(remote?.settings) };
+  const settings = branch
+    ? {
+        ...baseSettings,
+        address: branch.address,
+        phone: branch.phone || baseSettings.phone,
+        whatsapp: branch.whatsapp || baseSettings.whatsapp,
+        waMessage: `Hello Niramaya Physiotherapy (${branch.name}), I would like to book a consultation.`,
+      }
+    : baseSettings;
+
   const images = { ...DEFAULT_IMAGES, ...nonEmpty(remote?.images) };
   const text = Object.fromEntries(Object.entries(DICTS).map(([l, d]) => [l, deepMerge(d, remote?.text?.[l])]));
-  const reviews = Array.isArray(remote?.reviews) ? remote.reviews : DEFAULT_REVIEWS;
+  const reviews = Array.isArray(branch?.reviews)
+    ? branch.reviews
+    : Array.isArray(remote?.reviews)
+    ? remote.reviews
+    : DEFAULT_REVIEWS;
   const videos = Array.isArray(remote?.videos) ? remote.videos : DEFAULT_VIDEOS;
   const wa = withCountry(digits(settings.whatsapp));
   const q = encodeURIComponent(settings.address);
+
   return {
+    branch,
     text,
     settings,
     images,
@@ -37,7 +53,7 @@ export const buildSite = (remote) => {
 
 const SiteContext = createContext(null);
 
-export const SiteProvider = ({ children }) => {
+export const SiteProvider = ({ children, branch = null }) => {
   const [remote, setRemote] = useState(undefined);
 
   useEffect(() => {
@@ -58,7 +74,7 @@ export const SiteProvider = ({ children }) => {
     };
   }, []);
 
-  const site = useMemo(() => buildSite(remote), [remote]);
+  const site = useMemo(() => buildSite(remote, branch), [remote, branch]);
   const value = useMemo(() => ({ ...site, loading: remote === undefined, setRemote }), [site, remote]);
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;
 };
