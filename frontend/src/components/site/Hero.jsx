@@ -15,8 +15,14 @@ const fadeUp = (delay) => ({
 
 export const Hero = ({ onBook }) => {
   const { t, lang } = useLang();
-  const { img, phoneTel, settings } = useSite();
+  const { img, phoneTel, settings, branch } = useSite();
   const h = t.hero;
+  const heroLines = branch ? branch.seo.h1 : h.lines;
+  const heroEm = branch ? branch.seo.emIndex : h.em;
+  const heroSub = branch ? branch.seo.sub : h.sub;
+  const heroLocation = branch ? `${branch.shortName}, Pune` : h.location;
+  const heroBadge = branch ? branch.badge : h.badge;
+
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
@@ -65,10 +71,10 @@ export const Hero = ({ onBook }) => {
             className="font-display leading-display mt-8 text-[3.3rem] tracking-[-0.02em] sm:text-7xl lg:text-[5.9rem] xl:text-[6.8rem]"
             data-testid="hero-headline"
           >
-            {h.lines.map((line, i) => (
+            {heroLines.map((line, i) => (
               <span key={line} className="mask-line block overflow-hidden">
                 <motion.span
-                  className={`block ${i === h.em ? "italic text-[#8be04e]" : ""}`}
+                  className={`block ${i === heroEm ? "italic text-[#8be04e]" : ""}`}
                   initial={{ y: "118%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 1.15, delay: 0.25 + i * 0.14, ease: EASE }}
@@ -79,7 +85,7 @@ export const Hero = ({ onBook }) => {
             ))}
           </h1>
           <motion.p {...fadeUp(0.75)} className="mt-8 max-w-xl text-base leading-relaxed text-white/85 md:text-lg" data-testid="hero-subtext">
-            {h.sub}
+            {heroSub}
           </motion.p>
           <motion.div {...fadeUp(0.9)} className="mt-10 flex flex-wrap items-center gap-3">
             <button type="button" onClick={onBook} className="btn-leaf group" data-testid="hero-book-consultation-btn">
@@ -93,7 +99,7 @@ export const Hero = ({ onBook }) => {
           <motion.div {...fadeUp(1.05)} className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/85">
             <span className="flex items-center gap-2" data-testid="hero-location">
               <MapPin className="h-4 w-4 text-[#8be04e]" />
-              {h.location}
+              {heroLocation}
             </span>
             <a href={phoneTel} className="flex items-center gap-2 transition-colors hover:text-white" data-testid="hero-call-link">
               <Phone className="h-4 w-4 text-[#8be04e]" />
@@ -118,7 +124,7 @@ export const Hero = ({ onBook }) => {
             </div>
           </motion.div>
           <RotatingBadge
-            text={h.badge}
+            text={heroBadge}
             fit={lang === "en"}
             onClick={onBook}
             className="!absolute -left-1 top-6 sm:-left-6 lg:-left-16 lg:top-auto lg:bottom-16"
